@@ -1,0 +1,125 @@
+.postWrapper{
+    // display: flex;
+    // justify-content: space-between;
+    // flex-wrap: wrap;
+    // margin: 70px auto;
+    
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 15px;
+    margin-top: 90px;
+}
+
+.bandl{
+    // border: 1px solid black;
+    margin: 10px;
+    width: 202px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 5px 5px 5px gray;
+    &:hover{
+        transform: scale(1.1);
+    }
+
+}
+.title{
+    font-style: 18px;
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+a{
+    text-decoration: none;
+    // color: white;
+}
+.image_main{
+    width: 200px;
+
+}
+.text_container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    align-content: space-between;
+    padding: 5px;
+
+    
+}
+.description{
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    width: 200px;
+    opacity: 0.8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    z-index: 5;
+    &:hover{
+     width: 200px;
+    overflow: visible ;
+    white-space: pre-wrap;
+    transition-delay: 3s;  
+
+    }
+    
+}
+.games__button{
+    display: flex;
+    justify-content: space-between;
+    // color: white;
+    margin: 10px;
+}
+.bottom_object{
+    margin-top: 10px;
+    width: 200px;
+    // height: 150px;
+    display: flex;
+    justify-content: space-between;
+    // color: white;
+}
+.genre{
+
+    position: relative;
+    margin-right: 10px;
+    color: #8e8c84;
+}
+
+.Category{
+    //  margin-left: 1em !important; 
+    width: 150px;
+    // background-color: aquamarine;
+}
+a{
+    text-decoration: none !important;
+    // color: black;
+}
+.like{
+    color: pink;
+    &:hover{
+        transform: scale(1.2);
+    }
+
+}
+.games__autocomplete{
+    position: absolute;
+    left:0;
+    top: 50px;
+    width: 100%;
+    // background-color: grey;
+    z-index: 555;
+max-height: 240px;
+height: auto;
+overflow: auto;
+// color: white;
+}
+.games__autocomplite_item{
+    padding: 10px;
+    &:hover{
+        background-color: rgb(206, 199, 199);
+        cursor: pointer;
+        transition: cubic-bezier(1, 0, 0, 1) .3s all;
+    }
+}

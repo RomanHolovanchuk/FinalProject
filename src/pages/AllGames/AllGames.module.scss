@@ -1,0 +1,160 @@
+.allGames_wrapper{
+    margin: 80px 20px;
+}
+.allGames_wrapper__title{
+    // margin-left:10px;
+    text-align: center;
+}
+.wrapper__title{
+    text-align: center;
+  }
+  
+  
+  
+  
+  .wrapper__title,
+  .wrapper__title:after,
+  .wrapper__title:before {
+    transition: all 0.5s;
+  }
+  .wrapper__title:hover {
+    // color: #555;
+    cursor: pointer;
+  }
+  
+  .wrapper__title {
+    position: relative;
+  }
+  .wrapper__title:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: " ";
+    background: currentColor;
+    height: 1px;
+  }
+  .wrapper__title:hover:after {
+    width: 50%;
+  }
+.postWrapper{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    
+}
+.bandl{
+    border: 1px solid black;
+    margin: 10px;
+    width: 202px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 5px 5px 5px gray;
+    &:hover{
+        transform: scale(1.1);
+    }
+
+}
+.allGames__title{
+    margin-top: 80px;
+}
+.title{
+    font-style: 18px;
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+a{
+    text-decoration: none;
+    // color: white;
+}
+.image_main{
+    width: 200px;
+
+}
+.text_container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    align-content: space-between;
+    padding: 5px;
+
+    
+}
+.description{
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    width: 200px;
+    opacity: 0.8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    z-index: 5;
+    &:hover{
+     width: 200px;
+    overflow: visible ;
+    white-space: pre-wrap;
+    transition-delay: 3s;  
+
+    }
+    
+}
+.games__button{
+    display: flex;
+    justify-content: space-evenly;
+    // color: white;
+    margin: 10px;
+}
+.bottom_object{
+    margin-top: 10px;
+    width: 200px;
+    // height: 150px;
+    display: flex;
+    justify-content: space-between;
+    // color: white;
+}
+.genre{
+
+    position: relative;
+    
+    color: #8e8c84;
+}
+
+// .Category{
+//     //  margin-left: 1em !important; 
+//     width: 150px;
+//     // background-color: aquamarine;
+//     // color: red;
+//     border: 2px solid red !important;
+    
+// }
+// .form__label{
+//     color:green !important;
+// }
+
+
+.games__autocomplete{
+    position: absolute;
+    left:0;
+    top: 50px;
+    width: 100%;
+    // background-color: grey;
+    z-index: 555;
+max-height: 240px;
+height: auto;
+overflow: auto;
+// color: white;
+}
+.games__autocomplite_item{
+    padding: 10px;
+    &:hover{
+        background-color: rgb(206, 199, 199);
+        cursor: pointer;
+        transition: cubic-bezier(1, 0, 0, 1) .3s all;
+    }
+}

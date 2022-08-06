@@ -1,0 +1,40 @@
+.news_allPage{
+    margin-top: 70px;
+    margin-left: 10px;
+}
+
+.postWrapper{
+    display: flex;
+    flex-direction: column;
+    // margin: 10px;
+    
+}
+.image_main{
+    width: 250px;
+    box-shadow: 5px 5px 5px gray;
+    &:hover{
+        transform: scale(1.1);
+    }
+    
+}
+.bandl{
+    // border: 1px solid black;
+    margin: 5px;
+    // width: 262px;
+    display: flex;
+    // flex-direction: column;
+    justify-content: flex-start;
+}
+.text_container{
+    margin: 10px;
+}
+.news_title{
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+.news_comment{
+
+    color: grey;
+    font-size: 0.875em;
+
+}

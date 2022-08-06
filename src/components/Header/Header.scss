@@ -1,0 +1,106 @@
+.styles.header__wraper {
+  position: relative;
+}
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  // margin-bottom: 20px;
+  // background-color: white;
+  
+}
+
+.header__tags {
+  margin-top: 50px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  span {
+    color: gray;
+  }
+  a {
+    color: gray;
+    &:hover {
+      cursor: pointer;
+      transition: 1s;
+      background-size: 100% 2px;
+      color: red;
+    }
+  }
+}
+.header__ul_title {
+  li {
+    display: inline-block;
+    margin: 0 10px;
+    font-style: 18px;
+    // margin-left: 0px;
+    background: no-repeat 0 100%;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 2px;
+    transition: background-size 0.3s ease;
+    &:hover {
+      cursor: pointer;
+      transition: 1s;
+      background-size: 100% 2px;
+      color: currentColor;
+    }
+
+    a {
+      // text-decoration: none;
+      font-size: 22px;
+      // color: white;
+      // margin-top: 20px;
+      
+    }
+  }
+}
+.header__ul_tags {
+  li {
+    display: inline-block;
+    // margin: 0 10px;
+    font-style: 18px;
+    // margin-left: 0px;
+
+    a {
+      // text-decoration: none;
+      font-size: 15px;
+      margin-left: 20px;
+      // color: white;
+      // margin-top: 20px;
+    }
+  }
+}
+.logo {
+  padding: 0;
+  margin: 0;
+  width: 50px;
+  // height: 50px;
+  // background-image: url(../../assets/image/bomb.png);
+  z-index: 11111;
+  // background-color: red;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .logo {
+    animation: logo-spin infinite 20s linear alternate;
+  }
+}
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg) scale(0.1);
+  }
+  to {
+    transform: rotate(360deg) scale(0.7);
+  }
+}
