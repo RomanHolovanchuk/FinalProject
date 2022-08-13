@@ -1,4 +1,3 @@
-// @import-normalize;
 
 
 /*Обнуление*/
@@ -24,38 +23,93 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  // background-color: white;
   color: black;
   overflow-x: hidden;
-  // clear: both;
   position: relative;
-  height: 200px;
-  // margin-top: -200px;
 }
-
+.allPage{
+  min-height: 550px;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-// .logo{
-//   padding: 0;
-//   margin: 0;
-//   width: 50px;
-// }
-//   @media (prefers-reduced-motion: no-preference) {
-//       .logo {
-//         animation: logo-spin infinite 20s linear alternate;
+.Preview{
+  margin-top: 50px;
+  width: 150px;
+  height: 200px
+}
+  @media (prefers-reduced-motion: no-preference) {
+      .Preview {
+        animation: Preview-spin infinite 0.5s linear alternate;
         
-//       }
-//     }
-//     @keyframes logo-spin {
-//       from {
-//         transform: rotate(0deg) scale(0);
-//       //   transform: scale(0);
-//       }
-//       to {
-//         transform: rotate(360deg) scale(0.4);
-//       //   transform: scale(2);
-//       }
-//     }
+      }
+    }
+    @keyframes Preview-spin {
+      from {
+        transform: rotate(0deg) scale(1);
+      }
+      to {
+        transform: rotate(5deg) scale(1);
+      }
+    }
+
+
+    .wrapper__title {
+      text-align: center;
+    }
+    
+    .wrapper__title,
+    .wrapper__title:after,
+    .wrapper__title:before {
+      transition: all 0.5s;
+    }
+    .wrapper__title:hover {
+      color: #555;
+      cursor: pointer;
+    }
+    
+    .wrapper__title {
+      position: relative;
+    }
+    .wrapper__title:after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 0%;
+      content: " ";
+      background: currentColor;
+      height: 1px;
+    }
+    .wrapper__title:hover:after {
+      width: 100%;
+    }
+    
+    .postWrapper {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      margin: 20px auto;
+    }
+    .wrapper {
+      margin: 80px 20px;
+      min-height: 450px;
+    }
+    .wrapper__title {
+      text-align: center;
+    }
+.skeleton{
+  display: flex;
+justify-content: center; 
+//   flex-direction: row;
+margin-top: 170px;
+margin-bottom: 20px;
+height: 300px;
+@media screen and (max-width: 500px) {
+  height: 150px;  
+}
+}
+
  

@@ -3,7 +3,6 @@ import { createGlobalStyle } from "styled-components";
 export const lightTheme = {
   body: "#fff",
   fontColor: "#000",
- 
   
 };
 
@@ -51,8 +50,5 @@ export const GlobalStyles = createGlobalStyle`
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline{
   border: 1px solid ${(props) => props.theme.fontColor} !important;
 }
-.css-1d3z3hw-MuiOutlinedInput-notchedOutline:hover{
-  border: 1px solid red !important;
-}
-}
+
 `;

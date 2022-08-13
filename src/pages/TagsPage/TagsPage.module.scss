@@ -1,0 +1,51 @@
+.postWrapper {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 20px auto;
+}
+.wrapper {
+  margin: 80px 20px;
+  min-height: 500px;
+}
+.wrapper__title {
+  text-align: center;
+}
+
+.wrapper__title,
+.wrapper__title:after,
+.wrapper__title:before {
+  transition: all 0.5s;
+}
+.wrapper__title:hover {
+  color: #555;
+  cursor: pointer;
+}
+
+.wrapper__title {
+  position: relative;
+}
+.wrapper__title:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: " ";
+  background: currentColor;
+  height: 1px;
+}
+.wrapper__title:hover:after {
+  width: 50%;
+}
+.skeleton{
+  display: flex;
+justify-content: center; 
+margin-top: 20px;
+margin-bottom: 20px;
+height: 300px;
+@media screen and (max-width: 500px) {
+  height: 150px;  
+}
+}

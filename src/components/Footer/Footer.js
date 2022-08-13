@@ -7,19 +7,19 @@ function Footer() {
     <footer className={styles.footer_page}>
       <div className={styles.footer_links}>
         <ul>
-          <li><a className={styles.linku} href="/">About Us</a></li>
-          <li><a className={styles.linku} href="/">Partnerships</a></li>
-          <li><a className={styles.linku} href="/">Contact Us</a></li>
+          <li className={styles.linku}>About Us</li>
+          <li className={styles.linku}>Partnerships</li>
+          <li className={styles.linku}>Contact Us</li>
         </ul>
         <ul>
-          <li><a className={styles.linku} href="/">API</a></li>
-          <li><a className={styles.linku} href="/">Feature Request</a></li>
-          <li><a className={styles.linku} href="/">Help & Support</a></li>
+          <li className={styles.linku} >API</li>
+          <li className={styles.linku}>Feature Request</li>
+          <li className={styles.linku} >Help & Support</li>
         </ul>
         <ul>
-          <li><a className={styles.linku} href="/">Privacy Policy</a></li>
-          <li><a className={styles.linku} href="/">Cookies Policy</a></li>
-          <li><a className={styles.linku} href="/">Terms of Use</a></li>
+          <li className={styles.linku} >Privacy Policy</li>
+          <li className={styles.linku} >Cookies Policy</li>
+          <li className={styles.linku} >Terms of Use</li>
         </ul>
         <img src={logo} className={styles.logo} alt="logo" />
       </div>

@@ -2,16 +2,23 @@ import React,{useState} from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme, GlobalStyles } from "./themes.js";
 import "./styles.css";
+import { useSelector, useDispatch } from "react-redux";
+import { changeImage } from "store/reducers/changeImage";
 
 const StyledApp = styled.div`
   color: ${(props) => props.theme.fontColor};
 `;
 
 const DarkMode = () => {
+  const dispatch = useDispatch();
+ 
+
+
   const [theme, setTheme] = useState(true);
 
   const themeToggler = () => {
     theme === true ? setTheme(false) : setTheme(true);
+    dispatch(changeImage())
   };
 
   return (

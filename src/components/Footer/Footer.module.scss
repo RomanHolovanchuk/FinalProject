@@ -1,28 +1,22 @@
 
 .footer_page {
     max-width: 100%;
-    // height: 756px;
     margin-top: 150px;
-    // border-top: 1px solid rgba(156, 105, 226, 0.2);
     background-color: black;
-    // position: absolute;
-    // bottom: 0;
-    // max-width: 1240px;
-        // height: 150px;
-    // padding-bottom: 40px;
-    // top: 70px;
+  
   }
 
   .footer_links{
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     li {
       margin: 20px;}
   }
 
   .linku {
     color: grey;
-    // margin: 20px;
+    cursor: pointer;
   }
   .linku,
   .linku:after,
@@ -58,4 +52,8 @@
   
   .logo{
     width: 60px;
+    @media screen and (max-width: 450px) {
+      width: 30px;
+      height: 50px;
+    }
   }

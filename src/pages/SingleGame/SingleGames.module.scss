@@ -55,13 +55,11 @@
     display: flex;
     justify-content: space-between;
     position: relative;
-    
-    // margin: 10px;
+    max-width: 75%;
     
 }
 .single_image{
 width: 33%;
-// height: 100px;
 padding: 10px;
 &:hover{
     transform: scale(1.1);
@@ -69,7 +67,6 @@ padding: 10px;
 }
 
 .bandl {
-  // border: 1px solid black;
   margin: 10px;
   width: 202px;
   display: flex;
@@ -87,15 +84,8 @@ padding: 10px;
 }
 a {
   text-decoration: none;
-  // color: white;
 }
-.image_main {
-  width: 200px;
-  box-shadow: 5px 5px 5px gray;
-  &:hover{
-    transform: scale(1.1);
-  }
-}
+
 .text_container {
   display: flex;
   flex-wrap: wrap;
@@ -108,23 +98,24 @@ a {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
- 
+ text-align: justify;
   opacity: 0.8;
+  margin: 20px;
+  @media screen and (max-width: 600px) {
+    font-size: 0.5rem;
+}
 
 }
 .games__button {
   display: flex;
   justify-content: space-between;
-  // color: white;
   margin: 10px;
 }
 .bottom_object {
   margin-top: 10px;
   width: 200px;
-  // height: 150px;
   display: flex;
   justify-content: space-between;
-  // color: white;
 }
 .genre {
   position: relative;
@@ -133,8 +124,6 @@ a {
 }
 
 .info {
-//   margin-left: 270px;
-// display: flex;
 
   .info__request {
     margin: 10px;
@@ -157,9 +146,16 @@ a {
   width: 350px;
   img {
     width: 350px;
-    box-shadow: 5px 5px 5px gray;
+    height: 197px;
+    box-shadow: 3px 3px 3px gray;
     margin-bottom: 15px;
-  }
+    &:hover{
+        transform: scale(1.1);
+        }
+    @media screen and (max-width: 700px) {
+         width: 150px;
+      }
+    
   div {
     margin: 10px;
     text-align: justify;
@@ -167,14 +163,13 @@ a {
     line-height: 1.5;
   }
 }
-
+}
 .single_page__wrapper {
-  margin-top: 70px;
+ 
+  margin: 70px 15px;
 }
 
-.system_requir__wraper{
-    // margin-left: 270px;
-}
+
 .system_requir__info{
     display: flex;
     div{

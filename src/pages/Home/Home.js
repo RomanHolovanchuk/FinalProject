@@ -4,7 +4,7 @@ import SimpleSlider from '../../components/Slider/SimpleSlider'
 
 const Home = () => {
   return (
-    <div >
+    <div className='allPage'>
       <SimpleSlider />
       <h1 className={styles.allGames__title}>
         Best Free Games for PC and Browser in 2022!

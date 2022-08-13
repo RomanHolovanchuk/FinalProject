@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
-import RecipeSlide from './RecipeSlide';
-
-import { fetchGames } from "../../Api/request";
-
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
+import RecipeSlide from "./RecipeSlide";
+import { useSelector, useDispatch } from "react-redux";
+// import { fetchGames } from "../../Api/request";
+import logo from "assets/image/bomb.png";
+import logo2 from "assets/image/bombWhite.png";
+import { fetchGamesRedux } from "../../Api/request/index";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const settings_1 = {
   className: "center",
-  // centerMode: true,
   centerPadding: "0px",
 
   dots: false,
@@ -23,23 +23,40 @@ const settings_1 = {
 };
 
 const SimpleSlider = () => {
-const [recipes, setRecipe] = useState([]);
+ const dispatch = useDispatch();
 
-useEffect (() => {
-  const res = fetchGames();
-  res.then((data) => setRecipe(data));
-}, []);
-    return (
-      <div >
-      <Slider {...settings_1}>
-        {recipes.map((item) => (
+  useEffect(() => {
+    dispatch(fetchGamesRedux());
+  }, [dispatch]);
+
+  const gamers = useSelector((state) => state.gamesReducer.games);
+    const loading = useSelector((state) => state.gamesReducer.loading);
+  const isDarkTheme = useSelector(
+    (state) => state.changeImageReducer.isDarkTheme
+  );
+ 
+
+
+  return (
+    <div>
+{loading ? (
+  <div className='skeleton'>
+  {!isDarkTheme ? (
+    <img src={logo} className="Preview" alt="logo" />
+  ) : (
+    <img src={logo2} className="Preview" alt="logo" />
+  )}
+</div>
+) : (
+  <Slider {...settings_1}>
+        {gamers.map((item) => (
           <RecipeSlide key={item.id} recipe={item} renderTitle />
         ))}
       </Slider>
-
-     
+)}
+      
     </div>
   );
-}
+};
 
 export default SimpleSlider;

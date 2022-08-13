@@ -9,25 +9,34 @@ import Input from "@mui/material/Input";
 import KeyboardDoubleArrowDownRoundedIcon from "@mui/icons-material/KeyboardDoubleArrowDownRounded";
 import KeyboardDoubleArrowUpRoundedIcon from "@mui/icons-material/KeyboardDoubleArrowUpRounded";
 
-import './form.scss'
-import "../../index.scss";
+import logo from "assets/image/bomb.png";
+import logo2 from "assets/image/bombWhite.png";
+
 import styles from "./AllGames.module.scss";
 
-import GameItems from "../../components/GameItems/GameItems";
-import { fetchGames } from "../../Api/request/index";
+import GameItems from "components/GameItems/GameItems";
+
+import { useSelector, useDispatch } from "react-redux";
+import { setGames } from "store/reducers/games";
+import { fetchGamesRedux } from "Api/request/index";
 
 export const AllGames = () => {
-  
-  const [games, setGames] = useState([]);
   const [genre, setGenre] = useState("");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchGamesRedux(genre));
+  }, [dispatch, genre]);
+
+  const gamers = useSelector((state) => state.gamesReducer.games);
+  const loading = useSelector((state) => state.gamesReducer.loading);
+  const isDarkTheme = useSelector(
+    (state) => state.changeImageReducer.isDarkTheme
+  );
+
   const [sortByLetter, setSortByLetter] = useState("");
 
   const ariaLabel = { "aria-label": "description" };
-
-  useEffect(() => {
-    const res = fetchGames(genre);
-    res.then((data) => setGames(data));
-  }, [genre]);
 
   useEffect(() => {
     if (sortByLetter === "asc") {
@@ -38,36 +47,44 @@ export const AllGames = () => {
   }, [sortByLetter]);
 
   const ascSort = () => {
-    const sortedGames = games.sort((a, b) =>
+    const gamesCopy = [...gamers];
+
+    const sortedGames = gamesCopy.sort((a, b) =>
       a.title > b.title ? 1 : a.title < b.title ? -1 : 0
     );
 
-    setGames([...sortedGames]);
+    dispatch(setGames(sortedGames));
   };
 
   const descSort = () => {
-    const sortedGames = games.sort((a, b) =>
+    const gamesCopy = [...gamers];
+
+    const sortedGames = gamesCopy.sort((a, b) =>
       a.title > b.title ? -1 : a.title < b.title ? 1 : 0
     );
 
-    setGames([...sortedGames]);
+    dispatch(setGames(sortedGames));
   };
 
   const [value, setValue] = useState("");
-  const filteredGames = games.filter((game) => {
+
+  const filteredGames = gamers.filter((game) => {
     return game.title.toLowerCase().includes(value.toLowerCase());
   });
 
   return (
     <div className={styles.allGames_wrapper}>
-      <h2 className={styles.allGames_wrapper__title}>360 Free-to-play MMO games found in our list! Please note we are also including Multiplayer Online Games with MMO elements.</h2>
-       <div className={styles.games__button}>
-        <FormControl className='Category' sx={{ m: 1, minWidth: 120 }} size="small">
-          <InputLabel
-            className='form__label'
-            id="demo-select-small"
-            
-          >
+      <h2 className={styles.allGames_wrapper__title}>
+        360 Free-to-play MMO games found in our list! Please note we are also
+        including Multiplayer Online Games with MMO elements.
+      </h2>
+      <div className={styles.games__button}>
+        <FormControl
+          className="Category"
+          sx={{ m: 1, minWidth: 120 }}
+          size="small"
+        >
+          <InputLabel className="form__label" id="demo-select-small">
             Category
           </InputLabel>
           <Select
@@ -77,7 +94,9 @@ export const AllGames = () => {
             label="Category"
             onChange={(e) => setGenre(e.target.value)}
           >
-            <MenuItem className="form_menu" value="">All </MenuItem>
+            <MenuItem className="form_menu" value="">
+              All{" "}
+            </MenuItem>
             <MenuItem value="shooter">Shooter</MenuItem>
             <MenuItem value="mmorpg">MMORPG</MenuItem>
             <MenuItem value="pvp">PVP</MenuItem>
@@ -87,16 +106,17 @@ export const AllGames = () => {
           </Select>
         </FormControl>
 
-        <FormControl className='Category'>
-          <InputLabel
-            className='form__label'
-            id="demo-simple-select-label"
-          >
+        <FormControl
+          className="Category"
+          sx={{ m: 1, minWidth: 120 }}
+          size="small"
+        >
+          <InputLabel className="form__label" id="demo-select-small">
             Sort By
           </InputLabel>
           <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
+            labelId="demo-select-small"
+            id="demo-select-small"
             value={sortByLetter}
             label="Sort By"
             onChange={(e) => setSortByLetter(e.target.value)}
@@ -116,7 +136,7 @@ export const AllGames = () => {
 
         <div>
           <Input
-            className='form__label'
+            className="form__label"
             placeholder="Search..."
             inputProps={ariaLabel}
             onChange={(event) => setValue(event.target.value)}
@@ -125,11 +145,21 @@ export const AllGames = () => {
         </div>
       </div>
 
-      <div className={styles.postWrapper}>
-        {filteredGames.map((game) => {
-          return <GameItems game={game} key={game.id} />;
-        })}
-      </div>
+      {loading ? (
+        <div className={styles.skeleton}>
+          {!isDarkTheme ? (
+            <img src={logo} className="Preview" alt="logo" />
+          ) : (
+            <img src={logo2} className="Preview" alt="logo" />
+          )}
+        </div>
+      ) : (
+        <div className={styles.postWrapper}>
+          {filteredGames.map((game) => {
+            return <GameItems game={game} key={game.id} />;
+          })}
+        </div>
+      )}
     </div>
   );
 };

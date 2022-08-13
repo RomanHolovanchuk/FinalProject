@@ -1,10 +1,10 @@
 import React from 'react'
 import Auth from '../../components/FormLoginAutorization/Authorization/Auth'
-import ValidationTextFields from '../../components/FormLoginAutorization/Authorization/test'
+// import ValidationTextFields from '../../components/FormLoginAutorization/Authorization/test'
 // import SimpleSlider from '../../components/Slider/SimpleSlider'
 // import Anime from '../SingleGame/Anime'
 // import ItemGames from '../../components/GameItems/GameItems'
-import { AllGamesRedux } from 'pages/AllGames/AllGamesRedux'
+// import { AllGamesRedux } from 'pages/AllGames/AllGamesRedux'
 
 const Test = () => {
   return (

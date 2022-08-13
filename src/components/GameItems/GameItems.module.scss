@@ -1,8 +1,7 @@
 
 .bandl{
-    // border: 1px solid black;
     margin: 10px;
-    width: 202px;
+    width: 197px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -10,19 +9,28 @@
     &:hover{
         transform: scale(1.1);
     }
+    @media screen and (max-width: 478px) {
+       width: 150px;
+      }
 
 }
 .title{
     font-style: 18px;
     font-weight: 600;
     padding-bottom: 5px;
+    @media screen and (max-width: 478px) {
+        font-style: 14px;
+       }
 }
 a{
     text-decoration: none;
-    // color: white;
 }
 .image_main{
-    width: 200px;
+    width: 195px;
+    @media screen and (max-width: 478px) {
+        width: 150px;
+
+       }
 
 }
 .text_container{
@@ -50,23 +58,19 @@ a{
     overflow: visible ;
     white-space: pre-wrap;
     transition-delay: 3s;  
-
     }
     
 }
 .games__button{
     display: flex;
     justify-content: space-between;
-    // color: white;
     margin: 10px;
 }
 .bottom_object{
     margin-top: 10px;
     width: 200px;
-    // height: 150px;
     display: flex;
     justify-content: space-between;
-    // color: white;
 }
 .genre{
 

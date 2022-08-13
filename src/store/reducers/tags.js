@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchGamesRedux } from "Api/request/index";
+import { fetchTagsGames } from "Api/request/index";
 
 const gamesSlice = createSlice({
   name: "games",
@@ -15,14 +15,14 @@ const gamesSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchGamesRedux.fulfilled]: (state, action) => {
+    [fetchTagsGames.fulfilled]: (state, action) => {
       state.games = action.payload;
       state.loading = false;
     },
-    [fetchGamesRedux.pending]: (state) => {
+    [fetchTagsGames.pending]: (state) => {
       state.loading = true;
     },
-    [fetchGamesRedux.rejected]: (state, action) => {
+    [fetchTagsGames.rejected]: (state, action) => {
       state.error = action.error;
       state.loading = false;
     },

@@ -1,22 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchGamesRedux } from "Api/request/index";
 
-const gamesSlice = createSlice({
-  name: "games",
+const favoriteSlice = createSlice({
+  name: 'favorite',
   initialState: {
-    games: [],
+    favorite: [],
+    favoriteGames: [],
     loading: false,
     error: null,
-    
   },
   reducers: {
-    setGames: (state, action) => {
-      state.games = action.payload;
+    addToFav: (state, action) => {
+      state.favoriteGames.push(action.payload);
+      localStorage.setItem('fav', JSON.stringify(state.favoriteGames));
+    },
+    setFavGames: (state, action) => {
+      state.favoriteGames = action.payload;
     },
   },
   extraReducers: {
     [fetchGamesRedux.fulfilled]: (state, action) => {
-      state.games = action.payload;
+      state.favorite = action.payload;
       state.loading = false;
     },
     [fetchGamesRedux.pending]: (state) => {
@@ -29,6 +33,5 @@ const gamesSlice = createSlice({
   },
 });
 
-export default gamesSlice.reducer;
-export const { setGames } = gamesSlice.actions;
-
+export default favoriteSlice.reducer;
+export const { setFavGames, addToFav } = favoriteSlice.actions;
