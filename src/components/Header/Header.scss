@@ -52,6 +52,7 @@
     background-image: linear-gradient(currentColor, currentColor);
     background-size: 0% 2px;
     transition: background-size 0.3s ease;
+   
     @media screen and (max-width: 681px) {
       display: none;
     }
@@ -64,13 +65,21 @@
 
     a {
       font-size: 22px;
+      @media screen and (max-width: 780px) {
+        font-size: 16px;  
+        }
     }
   }
+}
+
+.header_right{
+  display: flex;
+  justify-content: end;
 }
 .header__ul_tags {
   li {
     display: inline-block;
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 491px) {
       font-size: 12px;
       margin: 10px;
     }
@@ -89,6 +98,9 @@
   margin: 0;
   width: 50px;
   z-index: 11111;
+  @media screen and (max-width: 450px) {
+    display: none;
+   }
 }
 @media (prefers-reduced-motion: no-preference) {
   .logo {

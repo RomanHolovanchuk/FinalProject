@@ -11,7 +11,7 @@ const Burger = ({header, items, active, setMenuActive}) => {
             <ul>
                 {items.map(item =>
                     <li>
-                       <a href={item.href} /> {item.value}  <a/>
+                       <a href={item.href} key={item.id}/> {item.value}  <a/>
                     </li>
                         )}
             </ul>

@@ -43,7 +43,7 @@ const [menuActive, setMenuActive] = useState(false)
           <span></span>
         </div>
       
-      <Burger active={menuActive} setMenuActive={setMenuActive} header={'Бургер меню'} items={items} />
+      <Burger active={menuActive} setMenuActive={setMenuActive} header={'Бургер меню'} items={items} key={items.id}/>
       <header className="header">
         {!isDarkTheme ? (
           <img src={logo} className="logo first" alt="logo" />
@@ -74,6 +74,8 @@ const [menuActive, setMenuActive] = useState(false)
         )}
         <DarkMode />
         {/* <Form /> */}
+
+        <div className='header_right'>
         <Link to='/FavGames'> <span className='favorite'>My Favorite</span>  <FavoriteIcon sx={{ color:'red', margin: '0 10px', cursor: 'pointer' }} fontSize="small" /> </Link>
         {username ? <h2>Hello, {username}</h2> : <h2> </h2>}
 
@@ -86,7 +88,7 @@ const [menuActive, setMenuActive] = useState(false)
             <Link to="/"> Log Out </Link>
           </button>
         )}
-
+        </div>
         {/* {open && <Auth setOpen={setOpen} />} */}
       </header>
       <div className="header__tags">
