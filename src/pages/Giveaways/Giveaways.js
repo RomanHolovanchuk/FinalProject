@@ -1,12 +1,26 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import { instance } from "../../Api";
+import { useEffect } from "react";
 import styles from "./Giveaways.module.scss";
-import Slider from "@mui/material/Slider";
 import { fetchGiveAways } from "Api/request";
 import { useSelector, useDispatch } from "react-redux";
 import logo from "assets/image/bomb.png";
 import logo2 from "assets/image/bombWhite.png";
+
+import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
+import { styled } from '@mui/material/styles';
+
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 10,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: theme.palette.mode === 'light' ? '#1a90ff' : '#308fe8',
+  },
+}));
 
 export const Giveaways = () => {
   // const [games, setGames] = useState([]);
@@ -19,7 +33,7 @@ export const Giveaways = () => {
 
   useEffect(() => {
     dispatch(fetchGiveAways());
-  }, []);
+  }, [dispatch]);
 
   const myGiveAways = useSelector((state) => state.giveAwaysReducer.giveAways);
   const loading = useSelector((state) => state.giveAwaysReducer.loading);
@@ -28,8 +42,8 @@ export const Giveaways = () => {
   );
 
   return (
-    <div className={styles.giveAways}>
-      <h2 className="wrapper__title">
+    <div className='wrapper'>
+       <h2 className="wrapper__title">
         Giveaways All giveaways are first come, first served, so join now and
         claim your loot! Plus it's free!
       </h2>
@@ -46,6 +60,7 @@ export const Giveaways = () => {
         </div>
       ) : (
         <div className={styles.postWrapper}>
+         
         {myGiveAways.map((giveaways) => {
           return (
             <div className={styles.bandl} key={giveaways.id}>
@@ -59,17 +74,20 @@ export const Giveaways = () => {
                 <div className={styles.description}>
                   {giveaways.short_description}
                 </div>
-
+                
                 <div className={styles.bottom_object}>
                   Keys left:
-                  <Slider
+                  
+                  {/* <Slider
                     disabled
                     defaultValue={parseInt(giveaways.keys_left)}
                     aria-label="Default"
                     valueLabelDisplay="auto"
-                  />
-                  <div className={styles.genre}>{giveaways.keys_left} </div>
+                  /> */}
+                  <div className={styles.genre}>        <BorderLinearProgress variant="determinate" value={parseInt(giveaways.keys_left)} />
+ {giveaways.keys_left}  </div>
                 </div>
+                
               </div>
             </div>
           );

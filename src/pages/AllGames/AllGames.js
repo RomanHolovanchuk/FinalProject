@@ -146,7 +146,7 @@ export const AllGames = () => {
       </div>
 
       {loading ? (
-        <div className={styles.skeleton}>
+        <div className="skeleton">
           {!isDarkTheme ? (
             <img src={logo} className="Preview" alt="logo" />
           ) : (

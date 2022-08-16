@@ -35,7 +35,7 @@ function App() {
       <Route path='/' element={ <Home />}/>
       <Route path='/test' element={ <Test />}/>
       <Route path='/:id' element={ <SingleGames />}/>
-      <Route path='/FavGames' element={ <FavGames />}/>
+      <Route path='/FavGames' element={ <FavGames  />}/>
 
       <Route path="/anime" element={<TagsPage title={'POPULAR TAGS: Anime'} category={'anime'}/>} />
       <Route path="/shooter" element={<TagsPage title={'POPULAR TAGS: Shooter'} category={'shooter'} />} />
