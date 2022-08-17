@@ -35,7 +35,7 @@ export const SingleGames = () => {
 
   const addToCartHandler = () => {
     
-   const findItem = favoriteGames.find((item) => item.id===id)
+   const findItem = favoriteGames.find((item) => item.id===game.id)
    if (!findItem) dispatch(addToFav(game));
     };
   return (
