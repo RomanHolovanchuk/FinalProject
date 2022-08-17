@@ -18,6 +18,11 @@ export const SingleGames = () => {
 
   // const game = useSelector((state) => state.singleGameReducer.game);
 
+  const favoriteGames = useSelector(
+    (state) => state.favoriteGamesReducer.favoriteGames
+  );
+
+
   const { id } = useParams();
   const [game, setGames] = useState({});
   useEffect(() => {
@@ -29,8 +34,9 @@ export const SingleGames = () => {
   }, [id]);
 
   const addToCartHandler = () => {
-    dispatch(addToFav(game));
-   
+    
+   const findItem = favoriteGames.find((item) => item.id===id)
+   if (!findItem) dispatch(addToFav(game));
     };
   return (
     <div className={styles.single_page__wrapper}>
