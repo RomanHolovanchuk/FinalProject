@@ -35,10 +35,7 @@ export const Header = () => {
     <nav className="header__wraper">
       <div className="burger-btn" >
       <Hamburger size={20} color="currentColor" toggled={menuActive} toggle={setMenuActive} />
-      {/* <div className="burger-btn" onClick={() => setMenuActive(!menuActive)}>
-        <span></span>
-       
-      </div> */}
+      
       </div>
       <Burger
         active={menuActive}
@@ -93,7 +90,7 @@ export const Header = () => {
           )}
 
           {!isLoggedIn ? (
-            <Link className="login" to="/test">
+            <Link className="login" to="/authorization">
               Log In
             </Link>
           ) : (

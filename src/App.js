@@ -7,17 +7,13 @@ import { News } from './pages/News/News';
 import {AllGames} from './pages/AllGames/AllGames';
 import SingleGames from './pages/SingleGame/SingleGames';
 import Home from  './pages/Home/Home'
-// import Anime from './pages/SingleGame/Anime';
-// import Shooter from './pages/SingleGame/Shooter';
-// import MOBA from './pages/SingleGame/MOBA';
-// import Browser from './pages/SingleGame/Browser';
+
 import Giveaways from './pages/Giveaways/Giveaways';
 import Footer from './components/Footer/Footer';
 import FavGames from './components/FavGames/FavGames'
 import TagsPage from 'pages/TagsPage/TagsPage';
+import Auth from 'components/FormLoginAutorization/Authorization/Auth';
 
-
-import Test from './pages/Test/Test';
 
 
 
@@ -33,7 +29,7 @@ function App() {
     <Header />
     <Routes>
       <Route path='/' element={ <Home />}/>
-      <Route path='/test' element={ <Test />}/>
+      <Route path='/authorization' element={ <Auth />}/>
       <Route path='/:id' element={ <SingleGames />}/>
       <Route path='/FavGames' element={ <FavGames  />}/>
 

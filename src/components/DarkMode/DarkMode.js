@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme, GlobalStyles } from "./themes.js";
 import "./styles.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { changeImage } from "store/reducers/changeImage";
 
 const StyledApp = styled.div`
