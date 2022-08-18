@@ -41,7 +41,8 @@
       cursor: pointer;
       transition: 1s;
       background-size: 100% 2px;
-      color: red;
+      opacity: 0.6;
+      transition: all 0.5s ease-out;
     }
   }
 }
@@ -57,7 +58,7 @@
     &:hover {
       cursor: pointer;
       opacity: 0.6;
-      transition: all 1s ease-out;
+      transition: all 0.5s ease-out;
     }
 
     a {
