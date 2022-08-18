@@ -32,6 +32,7 @@ function App() {
       <Route path='/authorization' element={ <Auth />}/>
       <Route path='/:id' element={ <SingleGames />}/>
       <Route path='/FavGames' element={ <FavGames  />}/>
+      <Route path='/FavGames/:id' element={ <SingleGames  />}/>
 
       <Route path="/anime" element={<TagsPage title={'POPULAR TAGS: Anime'} category={'anime'}/>} />
       <Route path="/shooter" element={<TagsPage title={'POPULAR TAGS: Shooter'} category={'shooter'} />} />
@@ -46,6 +47,8 @@ function App() {
       <Route path="/shooter/:id" element={<SingleGames />} />
       <Route path="/moba/:id" element={<SingleGames />} />
       <Route path="/browser/:id" element={<SingleGames />} />
+      <Route path='/FavGames/:id' element={ <SingleGames  />}/>
+
 
 
    

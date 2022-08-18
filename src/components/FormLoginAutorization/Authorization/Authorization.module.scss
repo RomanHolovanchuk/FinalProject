@@ -3,14 +3,11 @@
   justify-content: center;
   width: 400px;
   margin: 150px auto;
-  // margin-top: 150px;
   border-radius: 8px;
   img {
     width: 250px;
-    //  height: 505px;
     @media screen and (max-width: 450px) {
       width: 150px;
-      // height: 50px;
     }
   }
 }
@@ -18,28 +15,19 @@
   text-align: center;
   margin-bottom: 40px;
 }
-// .register_image{
-//   background: url('./assets/image/register.jpg');
-//   background-position: center;
-//   background-size: cover;
-// }
+
 .form {
-  // position: relative;
-  // width: 300px;
+ 
   display: flex;
   flex-direction: column;
 
-  // background-color: black;
   margin-left: 10px;
   justify-content: center;
-  // color: black
 }
 
 .field {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 10px;
-  // width: 300px;
 }
 .submit_btn {
   margin-top: 30px;
@@ -62,7 +50,6 @@
 
 .register_tabl {
   height: 50px !important;
-  margin-bottom: 20px !important;
 }
 .register_tabl__password {
   display: flex;
