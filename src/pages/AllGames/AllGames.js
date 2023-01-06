@@ -38,13 +38,7 @@ export const AllGames = () => {
 
   const ariaLabel = { "aria-label": "description" };
 
-  useEffect(() => {
-    if (sortByLetter === "asc") {
-      ascSort();
-    } else if (sortByLetter === "desc") {
-      descSort();
-    }
-  }, [sortByLetter]);
+  
 
   const ascSort = () => {
     const gamesCopy = [...gamers];
@@ -65,7 +59,14 @@ export const AllGames = () => {
 
     dispatch(setGames(sortedGames));
   };
-
+useEffect(() => {
+    if (sortByLetter === "asc") {
+      ascSort();
+    } else if (sortByLetter === "desc") {
+      descSort();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sortByLetter]);
   const [value, setValue] = useState("");
 
   const filteredGames = gamers.filter((game) => {

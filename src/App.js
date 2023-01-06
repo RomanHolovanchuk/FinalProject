@@ -1,6 +1,4 @@
-
 import React from 'react';
-
 import {Routes, Route} from 'react-router-dom';
 import { Header } from './components/Header/Header';
 import { News } from './pages/News/News';
@@ -15,25 +13,18 @@ import TagsPage from 'pages/TagsPage/TagsPage';
 import Auth from 'components/FormLoginAutorization/Authorization/Auth';
 
 
-
-
-
 function App() {
-
-
 
   return (
   <div >
   
- 
-    <Header />
+     <Header />
     <Routes>
       <Route path='/' element={ <Home />}/>
       <Route path='/authorization' element={ <Auth />}/>
       <Route path='/:id' element={ <SingleGames />}/>
       <Route path='/FavGames' element={ <FavGames  />}/>
-      <Route path='/FavGames/:id' element={ <SingleGames  />}/>
-
+      
       <Route path="/anime" element={<TagsPage title={'POPULAR TAGS: Anime'} category={'anime'}/>} />
       <Route path="/shooter" element={<TagsPage title={'POPULAR TAGS: Shooter'} category={'shooter'} />} />
       <Route path="/moba" element={<TagsPage title={'POPULAR TAGS: MOBA'} category='moba'/>} />
@@ -49,9 +40,6 @@ function App() {
       <Route path="/browser/:id" element={<SingleGames />} />
       <Route path='/FavGames/:id' element={ <SingleGames  />}/>
 
-
-
-   
     </Routes>
 
       <Footer />

@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import styles from "./SingleGames.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { addToFav } from "store/reducers/favorite";
-import { fetchSingleGame } from "../../Api/request/index";
+// import { fetchSingleGame } from "../../Api/request/index";
 
 export const SingleGames = () => {
   const dispatch = useDispatch();

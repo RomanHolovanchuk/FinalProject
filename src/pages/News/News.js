@@ -11,7 +11,7 @@ export const News = () => {
 
   useEffect(() => {
     dispatch(fetchNewsRedux());
-  }, []);
+  }, [dispatch]);
 
   const myNews = useSelector((state) => state.newsReducer.news);
   const loading = useSelector((state) => state.newsReducer.loading);

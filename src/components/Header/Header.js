@@ -19,6 +19,7 @@ export const Header = () => {
   const isDarkTheme = useSelector(
     (state) => state.changeImageReducer.isDarkTheme
   );
+ const dispatch = useDispatch();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -27,9 +28,8 @@ export const Header = () => {
     if (token && username) dispatch(logIn({ username: username }));
 
     if (!token && !username) dispatch(logOut());
-  }, [isLoggedIn]);
+  }, [dispatch, isLoggedIn]);
 
-  const dispatch = useDispatch();
 
   return (
     <nav className="header__wraper">
