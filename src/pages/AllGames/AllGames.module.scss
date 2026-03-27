@@ -2,10 +2,19 @@
     margin: 80px 20px;
     // height: calc(100vh - 150px);
 }
-.allGames_wrapper__title{
+// .allGames_wrapper__title{
+//     // margin-left:10px;
+//     text-align: center;
+// }
+
+.allGames_wrapper__title {
     // margin-left:10px;
     text-align: center;
+    color: #ff4500; /* Це яскраво-помаранчевий (Orange Red) */
+    font-weight: bold; /* Додамо жирності для ефекту */
+    text-transform: uppercase; /* Зробимо всі літери великими */
 }
+
 .wrapper__title{
     text-align: center;
   }
