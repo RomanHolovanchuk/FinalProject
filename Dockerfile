@@ -4,6 +4,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
+ENV REACT_APP_API_KEY=61c15492fbmshdc35b3d5be6badep143eabjsndfe9b60370e4
 RUN npm run build
 
 # Етап 2: Запуск через Nginx
