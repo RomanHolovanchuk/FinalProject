@@ -1,57 +1,72 @@
-provider "aws" {
-  region = "eu-north-1" 
+# --- Load Balancer ---
+resource "aws_lb" "main" {
+  name               = "gameshop-alb"
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.alb_sg.id]
+  subnets            = data.aws_subnets.default.ids
 }
 
-# 1. Створюємо "Фаєрвол" (Security Group)
-resource "aws_security_group" "gameshop_sg" {
-  name        = "gameshop-allow-web"
-  description = "Allow HTTP and SSH traffic"
+resource "aws_lb_target_group" "app" {
+  name        = "gameshop-tg"
+  port        = 80
+  protocol    = "HTTP"
+  vpc_id      = data.aws_vpc.default.id
+  target_type = "ip"
 
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # Дозволяємо SSH звідусіль (для навчання ок)
-  }
-
-  ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # Відкриваємо сайт для всього світу
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"] # Дозволяємо серверу ходити в інтернет (тягнути Docker)
+  health_check {
+    path = "/"
   }
 }
 
-# 2. Створюємо сам сервер EC2
-resource "aws_instance" "gameshop_prod" {
-  ami           = "ami-080254318c2d8932f" # Ubuntu 24.04 LTS у eu-north-1 
-  instance_type = "t3.micro"             # Free Tier!
+resource "aws_lb_listener" "http" {
+  load_balancer_arn = aws_lb.main.arn
+  port              = "80"
+  protocol          = "HTTP"
 
-  vpc_security_group_ids = [aws_security_group.gameshop_sg.id]
-  key_name               = "newKey" 
-  tags = {
-    Name = "GameShop-Stockholm"
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.app.arn
   }
-
-  # Автоматизація: встановлюємо Docker і запускаємо сайт
-  user_data = <<-EOF
-              #!/bin/bash
-              sudo apt update
-              sudo apt install -y docker.io
-              sudo systemctl start docker
-              sudo systemctl enable docker
-              sudo docker run -d -p 80:80 dollar329/shop-app:latest
-              EOF
 }
 
-# Виводимо публічну IP адресу після запуску
-output "server_ip" {
-  value = aws_instance.gameshop_prod.public_ip
+# --- ECS Cluster & Service ---
+resource "aws_ecs_cluster" "main" {
+  name = "gameshop-cluster"
+}
+
+resource "aws_ecs_task_definition" "app" {
+  family                   = "gameshop-task"
+  network_mode             = "awsvpc"
+  requires_compatibilities = ["FARGATE"]
+  cpu                      = "256"
+  memory                   = "512"
+
+  container_definitions = jsonencode([{
+    name  = "shop-app"
+    image = "dollar329/shop-app:latest"
+    portMappings = [{
+      containerPort = 80
+      hostPort      = 80
+    }]
+  }])
+}
+
+resource "aws_ecs_service" "main" {
+  name            = "gameshop-service"
+  cluster         = aws_ecs_cluster.main.id
+  task_definition = aws_ecs_task_definition.app.arn
+  launch_type     = "FARGATE"
+  desired_count   = 2
+
+  network_configuration {
+    subnets          = data.aws_subnets.default.ids
+    security_groups  = [aws_security_group.ecs_sg.id]
+    assign_public_ip = true
+  }
+
+  load_balancer {
+    target_group_arn = aws_lb_target_group.app.arn
+    container_name   = "shop-app"
+    container_port   = 80
+  }
 }
