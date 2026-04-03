@@ -7,7 +7,7 @@ const Home = () => {
     <div className='allPage'>
       <SimpleSlider />
       <h1 className={styles.allGames__title}>
-        Best Free Games for PC and Browser in 2022!
+        Best Free Games for PC and Browser in 2026!
       </h1>
       <h2 className={styles.allGames__semititle}>
         361 Free-to-play MMO games found in our list! Please note we are also
