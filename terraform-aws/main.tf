@@ -1,3 +1,18 @@
+terraform {
+  backend "s3" {
+    bucket         = "my-terraform-state-roma"
+    key            = "gameshop/terraform.tfstate" # шлях до файлу всередині бакету
+    region         = "eu-north-1"
+    encrypt        = true                         # шифрування для безпеки
+  }
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
 # --- Load Balancer ---
 resource "aws_lb" "main" {
   name               = "gameshop-alb"
